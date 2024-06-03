@@ -10,7 +10,7 @@ import asyncio
 intents = discord.Intents.default()
 intents.message_content = True
 client = commands.Bot(command_prefix='!', case_insensitive=True, intents=intents)
-SAVE_PATH = r'C:\your\path\here'
+SAVE_PATH = r''
 
 
 def clean_url(url):
