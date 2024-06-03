@@ -53,13 +53,13 @@ class MusicCore:
             url = music_client.queue.popleft()
             ydl_opts = {'format': 'mp4',
                         'nooverwrites': False,
-                        'outtmpl': rf'{SAVE_PATH}\{guild_id}.mp3'}
+                        'outtmpl': rf'{SAVE_PATH}{guild_id}.mp3'}
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download(url)
                 print('downloaded')
             music_client.vc.play(
                 discord.FFmpegPCMAudio(
-                    source=rf'{SAVE_PATH}\{guild_id}.mp3'))
+                    source=rf'{SAVE_PATH}{guild_id}.mp3'))
             while music_client.vc.is_playing() and music_client.vc.is_connected():
                 await asyncio.sleep(.5)
             if not music_client.vc.is_connected():
